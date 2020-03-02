@@ -4,7 +4,7 @@ from django.db import models
 class Company(models.Model):
     name = models.CharField("会社名", max_length=30, blank=False)
 
-    def _str_(self):
+    def __str__(self):
         return str(self.name)
 
 class Fstatement(models.Model):
@@ -26,7 +26,7 @@ class Fstatement(models.Model):
     cf_investment = models.IntegerField("投資ＣＦ（百万円）", default=0)
     cf_finance = models.IntegerField("財務ＣＦ（百万円）", default=0)
 
-    def _str_(self):
+    def __str__(self):
         return str(self.company) + '決算日：【' + str(self.fiscal_year) + '】'
 
      # 総資産
