@@ -19,7 +19,7 @@ class CompanyView(DetailView):
 
     def get_context_data(self, **kwargs):
         company_name = kwargs['object'].name
-        fstatement_list = Fstatement.objects.filter(company=kwargs['objects']).order_by('-fiscal_year')[:4]
+        fstatement_list = Fstatement.objects.filter(company=kwargs['object']).order_by('-fiscal_year')[:4]
         params = {
             'company_name': company_name,
             'fstatement_list': fstatement_list,
