@@ -129,7 +129,62 @@
                 </div>
             <div>
         </div>
+        <hr>
         <br><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>指標</h4>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <tr style="text-align: center;">
+                        <td>指標名</td>
+                        <td>意味</td>
+                        <td width="150px">数値</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="title">安全性の指標</td>
+                    </tr>
+                    <tr>
+                        <td>流動比率</td>
+                        <td>「流動資産／流動負債」。企業の短期的な支払能力を簡易的に判断。200%以上だと優良。</td>
+                        <td class="rate">{{ object.current_rate|floatformat:1 }}％</td>
+                    </tr>
+                    <tr>
+                        <td>自己資本比率</td>
+                        <td>「純資産／総資産」。会社の持つ資産がどの程度自己資本でまかなわれているか。</td>
+                        <td class="rate">{{ object.net_assets_rate|floatformat:1 }}％</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="title">収益性の指標</td>
+                    </tr>
+                    <tr>
+                        <td>粗利益率</td>
+                        <td>売上に対して原価だけを引いた利益がどの程度残るか。</td>
+                        <td class="rate">{{ object.gross_profit_rate|floatformat:1 }}％</td>
+                    </tr>
+                    <tr>
+                        <td>営業利益率</td>
+                        <td>本業としての利益率。</td>
+                        <td class="rate">{{ object.operating_profit_rate|floatformat:1 }}％</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="title">効率性の指標</td>
+                    </tr>
+                    <tr>
+                        <td>ＲＯＥ</td>
+                        <td>自己資本に対して利益がどの程度あるか。（ここでは営業利益を用いる）</td>
+                        <td class="rate">{{ object.roe|floatformat:1 }}％</td>
+                    </tr>
+                    <tr>
+                        <td>ＲＯＡ</td>
+                        <td>総資産に対して利益がどの程度あるか。（ここでは営業利益を用いる）</td>
+                        <td class="rate">{{ object.roa|floatformat:1 }}％</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br><br><br>
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
