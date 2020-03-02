@@ -39,7 +39,7 @@
             <tr class="odd gradeX text-center">
                 <td class="text-center">{{ item.company}}</td>
                 <td class="text-center">{{ item.fiscal_year }}</td>
-                <td><a href="">詳細へ</a></td>
+                <td><a href="{% url 'finchart:fstatement' item.pk %}">詳細へ</a></td>
             </tr>
             {% endfor %}
             </tbody>
