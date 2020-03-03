@@ -2,7 +2,7 @@
 {% load humanize %}
 
 {% block content %}
-<h1>{{ company_name }}の決算データ</h1>
+<h1>{{ object.name }}の決算データ</h1>
 
 <section class="tables">
     <div class="container-fluid">
@@ -17,7 +17,7 @@
                             <table width="100%" class="table table-bordered display nowrap">
                                 <tr>
                                     <th rowspan="2" width="120px"></th>
-                                    {% for item in fstatement_list reversed %}
+                                    {% for item in object_list reversed %}
                                         <th colspan="2" width="120px" class="center"><a href="{% url 'finchart:fstatement' item.pk %}">{{ item.fiscal_year }}</a></th>
                                     {% endfor %}
                                 </tr>
@@ -39,28 +39,28 @@
                                 </tr>
                                 <tr>
                                 <th class="lv1-bottom">流動資産</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount lv1-bottom">{{ item.bs_current_assets|intcomma }}</td>
                                     <td class="rate lv1-bottom">{{ item.current_assets_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th class="lv1-bottom">固定資産</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount lv1-bottom">{{ item.bs_fixed_assets|intcomma }}</td>
                                     <td class="rate lv1-bottom">{{ item.fixed_assets_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th class="lv1-bottom">繰延資産</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount lv1-bottom">{{ item.bs_deferred_assets|intcomma }}</td>
                                     <td class="rate lv1-bottom">{{ item.deferred_assets_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th class="lv1-bottom">総資産</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount lv1-bottom">{{ item.bs_total_assets|intcomma }}</td>
                                     <td class="rate lv1-bottom">100％</td>
                                 {% endfor %}
@@ -70,14 +70,14 @@
                                 </tr>
                                 <tr>
                                 <th>流動負債</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.bs_current_liabilities|intcomma }}</td>
                                     <td class="rate">{{ item.current_liabilities_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th>固定負債</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.bs_fixed_liabilities|intcomma }}</td>
                                     <td class="rate">{{ item.fixed_liabilities_rate|floatformat:1 }}％</td>
                                 {% endfor %}
@@ -87,14 +87,14 @@
                                 </tr>
                                 <tr>
                                 <th class="lv1-bottom">株主資本</th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount lv1-bottom">{{ item.bs_net_assets|intcomma }}</td>
                                     <td class="rate lv1-bottom">{{ item.net_assets_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th></th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <th colspan="2" width="120px" class="center"><a href="{% url 'finchart:fstatement' item.pk %}">{{ item.fiscal_year }}</a></th>
                                 {% endfor %}
                                 </tr>
@@ -103,49 +103,49 @@
                                 </tr>
                                 <tr>
                                 <td>総売上高</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_gross_sales|intcomma }}</td>
                                     <td class="rate">-</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>売上高総利益</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_gross_profit|intcomma }}</td>
                                     <td class="rate">{{ item.gross_profit_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>営業利益</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_operating_profit|intcomma }}</td>
                                     <td class="rate">{{ item.operating_profit_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>経常利益</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_ordinary_income|intcomma }}</td>
                                     <td class="rate">{{ item.ordinary_income_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>税引き前利益</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_income_before_tax|intcomma }}</td>
                                     <td class="rate">{{ item.income_before_tax_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr class="bottom">
                                 <td>当期純利益</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td class="amount">{{ item.pl_net_income|intcomma }}</td>
                                     <td class="rate">{{ item.net_income_rate|floatformat:1 }}％</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <th></th>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <th colspan="2" width="120px" class="center"><a href="{% url 'finchart:fstatement' item.pk %}">{{ item.fiscal_year }}</a></th>
                                 {% endfor %}
                                 </tr>
@@ -153,25 +153,25 @@
                                     <td colspan="9" class="bg-title" style="text-align: left;">キャッシュフロー</td>
                                 </tr>
                                 <td>営業ＣＦ</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td colspan="2" class="amount">{{ item.cf_operating|intcomma }}</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>投資ＣＦ</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td colspan="2" class="amount">{{ item.cf_investment|intcomma }}</td>
                                 {% endfor %}
                                 </tr>
                                 <tr>
                                 <td>財務ＣＦ</td>
-                                {% for item in fstatement_list reversed %}
+                                {% for item in object_list reversed %}
                                     <td colspan="2" class="amount">{{ item.cf_finance|intcomma }}</td>
                                 {% endfor %}
                                 </tr>
                                 <tr class="bottom">
                                     <th>合計ＣＦ</th>
-                                    {% for item in fstatement_list reversed %}
+                                    {% for item in object_list reversed %}
                                         <td colspan="2" class="amount">{{ item.cf_total_amount|intcomma }}</td>
                                     {% endfor %}
                                 </tr>
@@ -182,6 +182,7 @@
                 </div>
             </div>
         </div>
+        {% include 'finchart/pagination.html' %}
     </div>
 </section>
 <br><br>
